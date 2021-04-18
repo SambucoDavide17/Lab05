@@ -1,6 +1,8 @@
 package it.polito.tdp.anagrammi;
 
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.anagrammi.model.Model;
@@ -37,12 +39,29 @@ public class FXMLController {
 
     @FXML
     void doCalcola(ActionEvent event) {
-
+    	
+    	txtCorretti.clear();
+    	txtErrati.clear();
+    	List<String> anagrammi = new LinkedList<String>();
+    	List<String> anagrammiCorretti = new LinkedList<String>();
+    	List<String> anagrammiErrati = new LinkedList<String>();
+    	anagrammi = model.anagrammi(txtParola.getText());
+    	anagrammiCorretti = model.anagrammiCorretti(anagrammi);
+    	anagrammiErrati = model.anagrammiErrati(anagrammi);
+    	for(String s: anagrammiCorretti) {
+    		txtCorretti.appendText(s + " ");
+    	}
+    	for(String s: anagrammiErrati) {
+    		txtErrati.appendText(s + " ");
+    	}
+    	
     }
 
     @FXML
     void doReset(ActionEvent event) {
-
+    	
+    	txtCorretti.clear();
+    	txtErrati.clear();
     }
 
     @FXML

@@ -32,4 +32,13 @@ public class CorsoDAO {
 
 		}
 	}
+	
+	public boolean isCorretto(String anagramma) {
+		
+			List<String> parole = new LinkedList<String>();
+			((CorsoDAO) parole).getTutteParole();
+			if(parole.contains(anagramma))
+				return true;
+			return false;
+	}
 }
